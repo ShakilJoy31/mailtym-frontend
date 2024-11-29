@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import homeLogo from '../assets/Home_Logo.webp';
+import homeLogo from '../assets/Pet-Find-logo.png';
 
 import {
     FaUser,
@@ -89,13 +89,23 @@ const Navbar = () => {
             <div className="flex gap-x-4 py-[20px]">
 
                 {
-                    user? <Link href={'/my-profile'} className="hover:bg-gray-200 hover:text-black border text-white py-2 px-4 rounded-sm flex gap-x-2 items-center">
+                    user? <button className="hover:bg-gray-200 hover:text-black border text-white py-2 px-4 rounded-sm flex gap-x-2 items-center">
                     <FaUser size={20} />
                     <span>{user}</span>
-                </Link> : <Link href={'/'} className="hover:bg-gray-200 hover:text-black border text-white py-2 px-4 rounded-sm flex gap-x-2 items-center">
+                </button> : <Link href={'/login'} className="hover:bg-gray-200 hover:text-black border text-white py-2 px-4 rounded-sm flex gap-x-2 items-center">
                     <FaUser size={20} />
                     <span>Login</span>
                 </Link>
+                }
+
+                {
+                    user? <button onClick={()=> {
+                        localStorage.removeItem("user");
+                        window.location.reload();
+                    }} className="hover:bg-red-500 border text-white py-2 px-4 rounded-sm flex gap-x-2 items-center">
+                    <FaUser size={20} />
+                    <span>Logout</span>
+                </button> : ''
                 }
 
             </div>

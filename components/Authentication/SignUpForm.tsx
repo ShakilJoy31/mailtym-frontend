@@ -37,23 +37,41 @@ const SignUpForm = () => {
     const formData = {
       name: name,
       email: email,
-      password: password
+      password: password,
     };
-    if (password === confirmPassword) {
-      const result = await handlePostDataToDatabase(formData);
+  
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+    if (!email || !emailRegex.test(email)) {
+      toast.error('Invalid email address. Please enter a valid email.', {
+        autoClose: 2000,
+      });
+      return;
+    }
+  
+    if (password !== confirmPassword) {
+      toast.error('OPPS! Password is not matched.', {
+        autoClose: 2000,
+      });
+      return;
+    }
+  
+    const result = await handlePostDataToDatabase(formData);
+  
+    if (result?.acknowledged === true) {
       toast.success(result?.message || 'Account created successfully!', {
         autoClose: 2000,
       });
-      if (result?.acknowledged === true) {
-        localStorage.setItem("user", JSON.stringify(formData));
-        router?.push('/');
-      }
-    }else{
-      toast.error('OPPS! Password is not matched.', {
+      localStorage.setItem("user", JSON.stringify(formData));
+      router?.push('/');
+    } else {
+      toast.error(result?.message || 'An error occurred. Please try again.', {
         autoClose: 2000,
       });
     }
   };
+  
 
 
 

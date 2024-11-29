@@ -3,11 +3,11 @@
 import LoginForm from "@/components/Authentication/LoginForm";
 import HomeComponent from "@/components/HomeComponent";
 
-export default function Home() {
+export default function Login() {
   return (
     <div className="">
       <div className="">
-        <HomeComponent></HomeComponent>
+        <LoginForm></LoginForm>
       </div>
     </div>
   );
