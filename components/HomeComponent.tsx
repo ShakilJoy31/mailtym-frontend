@@ -39,7 +39,26 @@ const AdminPage = () => {
 
   return (
     <div className="mt-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
-      <h1 className="text-2xl font-bold text-center mb-6">Pet Adoption Listings</h1>
+      {/* The home banner */}
+      <div>
+        <div className="lg:flex grid space-4 lg:space-0 justify-between items-center">
+          <div className="w-full lg:w-1/2">
+            <p className="text-xl text-gray-600">There's no place like home.</p>
+            <h1 className="text-4xl text-black font-bold">Keeping animals
+              out of shelters by <span className="text-orange-600">empowering communities</span></h1>
+          </div>
+
+          <div className="w-full lg:w-1/2">
+            <img
+              src={'https://home-home.org/assets/images/home_hero.png'}
+              alt={'Home image'}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <h1 className="text-2xl font-bold text-center mb-6 text-black">Pet Adoption Listings</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {products.map((product) => (
           <div
@@ -97,6 +116,8 @@ const AdminPage = () => {
           </div>
         ))}
       </div>
+
+
     </div>
   );
 };

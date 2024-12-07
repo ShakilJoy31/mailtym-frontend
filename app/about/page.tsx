@@ -1,43 +1,18 @@
 'use client'
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import CommunityComponentCSS from '../../style/Home.module.css';
-import QuestionsAndAnswers from '../../components/QuestionsAndAnswers';
 
 const AboutPage: React.FC = () => {
-  const router = useRouter();
-  const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>([]);
-  const [billMonthly, setBillMonthly] = useState(false);
-  console.log(billMonthly)
   return (
-    <div>
-      <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl flex justify-center'>About</h1>
-      <p className='flex justify-center my-2 italic'>This is about page. Vai, before you modify please do knock me!!!! Happy codding vai.</p>
-      <div className='flex justify-around my-2'>
-        <div className='flex justify-around bg-slate-50 rounded-lg p-2 gap-2'>
-          <p onClick={() => setBillMonthly(!billMonthly)} className={`${billMonthly ? '' : 'bg-slate-700 text-white rounded-lg'} py-2 px-4 text-black hover:cursor-pointer `}>Billed Monthly</p>
-          <p onClick={() => setBillMonthly(!billMonthly)} className={`${!billMonthly ? '' : 'bg-slate-700 text-white rounded-lg'} py-2 px-4 text-black hover:cursor-pointer `}>Billed Yearly</p>
-        </div>
-      </div>
+    <div className='h-screen'>
+      <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl flex justify-center text-black'>About</h1>
+      <p className='flex justify-center my-2 italic px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 text-black'>Welcome to Pet finder website, the ultimate online destination for pet seekers and adopters! Our mission is to connect loving families with pets in need of a forever home. We provide a simple, intuitive platform where you can find a variety of pets, including dogs, cats, and small animals, all looking for a caring owner.
 
+        Whether you are searching for a furry friend to adopt or trying to rehome a pet, we aim to make the process as easy and stress-free as possible. Our website allows users to search through listings by breed, age, size, and location, ensuring that you find the perfect match for your family.
 
-      {/* The another conten will appear heare.... */}
-
+        At Pet finder website, we believe every pet deserves a second chance, and we are here to help make that happen. Join us in giving animals a loving home today!</p>
     </div>
   );
 };
 
 export default AboutPage;
-
-
-
-
-{/* <div style={{
-      borderRadius: "5px",
-      backgroundImage: "linear-gradient(to right top, rgb(139, 92, 246), rgb(253, 186, 116))",
-      backgroundSize: "100%",
-      backgroundRepeat: "repeat",
-    }} className='mt-[100px]'>
-      <h1>This is prising page.</h1>
-    </div> */}

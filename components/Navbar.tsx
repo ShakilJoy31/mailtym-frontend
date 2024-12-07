@@ -12,8 +12,7 @@ import { useEffect, useState } from "react";
 const links = [
     { url: "/", title: "Home" },
     { url: "/about", title: "About" },
-    { url: "/pricing", title: "Pricing" },
-    { url: "/contact", title: "Contact" },
+    { url: "/pricing", title: "Pricing" }
 ]
 
 const Navbar = () => {
@@ -60,39 +59,13 @@ const Navbar = () => {
                 }
             </div>
 
-            {/* <div className="md:flex hidden gap-x-6 w-1/3">
-                <a href="tel:+8801761043883"><div>
-                    <span className='flex items-center justify-center mt-1'><FaPhone size={25}></FaPhone></span>
-                </div></a>
-
-               
-                <a target='_blank' href="https://wa.me/message/6CPDT6OUH2SJL1"><div>
-                    <span className='flex items-center justify-center mt-1'><IoLogoWhatsapp size={25}></IoLogoWhatsapp></span>
-                </div></a>
-
-               
-                <a target='_blank' href="https://www.facebook.com/beeraw23"><div>
-                    <span className='flex items-center justify-center mt-1'><FaFacebook size={25}></FaFacebook></span>
-                </div></a>
-
-              
-                <a target='_blank' href="https://www.messenger.com/t/101277466406447"><div>
-                    <span className='flex items-center justify-center mt-1'><FaLinkedin size={25}></FaLinkedin></span>
-                </div></a>
-
-                <a target='_blank' href="https://www.messenger.com/t/101277466406447"><div>
-                    <span className='flex items-center justify-center mt-1'><FaGithub size={25}></FaGithub></span>
-                </div></a>
-
-            </div> */}
-
             <div className="flex gap-x-4 py-[20px]">
 
                 {
-                    user? <button className="hover:bg-gray-200 hover:text-black border text-white py-2 px-4 rounded-sm flex gap-x-2 items-center">
+                    user? <button className="hover:bg-gray-200 hover:text-black border text-black py-2 px-4 rounded-sm flex gap-x-2 items-center">
                     <FaUser size={20} />
                     <span>{user}</span>
-                </button> : <Link href={'/login'} className="hover:bg-gray-200 hover:text-black border text-white py-2 px-4 rounded-sm flex gap-x-2 items-center">
+                </button> : <Link href={'/login'} className="hover:bg-gray-200 hover:text-black border text-black py-2 px-4 rounded-sm flex gap-x-2 items-center">
                     <FaUser size={20} />
                     <span>Login</span>
                 </Link>
