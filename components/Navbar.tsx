@@ -49,7 +49,7 @@ const Navbar = () => {
                 {
                     links.map((link, index) => {
                         return (
-                            <div key={index} className={`${link.url === pathname ? "bg-black text-black rounded-md px-4 py-1" : ""}`}>
+                            <div key={index} className={`${link.url === pathname ? "bg-black text-white rounded-md px-4 py-1" : ""}`}>
                                 <Link href={link.url}>
                                     {link.title}
                                 </Link>
