@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FaChevronLeft } from "react-icons/fa6";
-import homeLogo from '../../assets/Home_Logo.webp';
+import homeLogo from '../../assets/Pet-Find-logo.png';
 import { handleLogin } from "@/server-calling/authentication";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -50,7 +50,7 @@ const LoginForm = () => {
   };
 
   return (
-    <section className="">
+    <section className="h-screen">
 
       {/* The new authentication system */}
 

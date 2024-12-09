@@ -8,7 +8,7 @@ import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { FaChevronLeft } from "react-icons/fa6";
 import 'react-toastify/dist/ReactToastify.css';
-import homeLogo from '../../assets/Home_Logo.webp';
+import homeLogo from '../../assets/Pet-Find-logo.png';
 
 
 const SignUpForm = () => {
@@ -22,8 +22,6 @@ const SignUpForm = () => {
   const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
   const [confirmPassword, setConfirmPassword] = useState<string | null>(null);
-
-
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -76,7 +74,7 @@ const SignUpForm = () => {
 
 
   return (
-    <section className="pb-16 pt-6">
+    <section className="pb-16 pt-6 h-screen">
 
       <div className="flex items-center justify-center">
         <div className="w-full max-w-lg bg-white border border-gray-300 rounded-sm px-12 py-6">
