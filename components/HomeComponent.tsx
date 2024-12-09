@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
 // Define the type for a product
@@ -22,6 +23,7 @@ type Product = {
 const AdminPage = () => {
   // Use the Product type for the state
   const [products, setProducts] = useState<Product[]>([]);
+  const router = useRouter(); 
 
   useEffect(() => {
     fetch("http://localhost:5000/get-productsByAdmin", {
@@ -109,7 +111,7 @@ const AdminPage = () => {
               </p>
             </div>
             <div className="p-4 bg-gray-200">
-              <button className="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition">
+              <button onClick={()=> router.push(`/${product._id}`)} className="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition">
                 Adopt {product.name}
               </button>
             </div>
