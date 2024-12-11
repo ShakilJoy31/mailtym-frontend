@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
@@ -27,6 +27,18 @@ const AdminPage = () => {
     const [description, setDescription] = useState("");
     const [images, setImages] = useState<string[]>([]);
     const [picture, setPicture] = useState<File | null>(null);
+
+    const [user, setUser] = useState<string | null>(null);
+
+    useEffect(()=> {
+    const getUser = localStorage.getItem("user");
+    if (getUser) {
+      const parsedUser = JSON.parse(getUser); 
+      setUser(parsedUser?.email);
+    }
+    },[])
+
+    console.log(user); 
 
     // Handle Image Upload
     if (picture) {
@@ -91,7 +103,8 @@ const AdminPage = () => {
         <div className="px-4 sm:px-6 md:px-8  lg:px-12 xl:px-16 2xl:px-20 py-8">
             <div className="flex justify-between items-center">
                 <h1 className="text-xl font-bold mb-4 text-black">Add a New Pet</h1>
-                <div className="flex gap-x-4">
+                {
+                    user === 'admin@gmail.com' ? <div className="flex gap-x-4">
                     <button
                         type="button"
                         onClick={() => router.push('/admin-route/manage-users')}
@@ -107,7 +120,9 @@ const AdminPage = () => {
                     >
                         Manage Adoptation
                     </button>
-                </div>
+                </div> : ''
+                }
+                
             </div>
 
             <form className="space-y-4">

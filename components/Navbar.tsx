@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 const links = [
     { url: "/", title: "Home" },
     { url: "/about", title: "About" },
-    { url: "/pricing", title: "Pricing" }
+    { url: "/admin-route", title: "Upload Pet" }
 ]
 
 const Navbar = () => {

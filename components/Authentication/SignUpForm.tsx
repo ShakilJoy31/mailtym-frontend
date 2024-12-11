@@ -54,7 +54,14 @@ const SignUpForm = () => {
       });
       return;
     }
-  
+
+    if(password && password.length < 6){
+      toast.error('Password must be 6 digit or more.', {
+        autoClose: 2000,
+      });
+      return
+    }
+
     const result = await handlePostDataToDatabase(formData);
   
     if (result?.acknowledged === true) {

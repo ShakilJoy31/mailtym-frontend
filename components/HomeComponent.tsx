@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
 // Define the type for a product
@@ -22,6 +23,8 @@ type Product = {
 const AdminPage = () => {
   // Use the Product type for the state
   const [products, setProducts] = useState<Product[]>([]);
+  const [limit, setLimit] = useState(8); 
+  const router = useRouter();
 
   useEffect(() => {
     fetch("http://localhost:5000/get-productsByAdmin", {
@@ -60,7 +63,7 @@ const AdminPage = () => {
 
       <h1 className="text-2xl font-bold text-center mb-6 text-black">Pet Adoption Listings</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {products.map((product) => (
+        {products.slice(0, limit).map((product) => (
           <div
             key={product._id}
             className="bg-white border rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300"
@@ -74,12 +77,7 @@ const AdminPage = () => {
             </div>
             <div className="p-4">
               <h2 className="text-lg font-semibold text-gray-800">{product.name}</h2>
-              <p className="text-sm text-gray-600">
-                <strong>Species:</strong> {product.species}
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Breed:</strong> {product.breed}
-              </p>
+
               <p className="text-sm text-gray-600">
                 <strong>Age:</strong> {product.age} months
               </p>
@@ -99,17 +97,11 @@ const AdminPage = () => {
                 <strong>Health Condition:</strong> {product.healthCondition}
               </p>
               <p className="text-sm text-gray-600">
-                <strong>Spayed/Neutered:</strong> {product.spayedNeutered}
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Adoption Fee:</strong> ${product.adoptionFee}
-              </p>
-              <p className="text-sm text-gray-600">
-                <strong>Description:</strong> {product.description}
+                <strong className="font-bold">Adoption Fee:</strong> ${product.adoptionFee}
               </p>
             </div>
             <div className="p-4 bg-gray-200">
-              <button className="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition">
+              <button onClick={() => router.push(`/${product._id}`)} className="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition">
                 Adopt {product.name}
               </button>
             </div>
@@ -117,6 +109,13 @@ const AdminPage = () => {
         ))}
       </div>
 
+      <div className="flex justify-end mt-8">
+        <button onClick={()=> setLimit(limit + 4)}
+          type="button"
+          className="w-32 bg-black hover:bg-gray-500 text-white py-2 rounded">
+          Show more
+        </button>
+      </div>
 
     </div>
   );
