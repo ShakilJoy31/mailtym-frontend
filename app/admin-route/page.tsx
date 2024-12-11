@@ -89,7 +89,27 @@ const AdminPage = () => {
 
     return (
         <div className="px-4 sm:px-6 md:px-8  lg:px-12 xl:px-16 2xl:px-20 py-8">
-            <h1 className="text-xl font-bold mb-4">Add a New Pet</h1>
+            <div className="flex justify-between items-center">
+                <h1 className="text-xl font-bold mb-4 text-black">Add a New Pet</h1>
+                <div className="flex gap-x-4">
+                    <button
+                        type="button"
+                        onClick={() => router.push('/admin-route/manage-users')}
+                        className="w-48 bg-black hover:bg-gray-600 text-white py-2 rounded"
+                    >
+                        Manage Users
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={() => router.push('/admin-route/manage-adoptation')}
+                        className="w-48 bg-black hover:bg-gray-600 text-white py-2 rounded"
+                    >
+                        Manage Adoptation
+                    </button>
+                </div>
+            </div>
+
             <form className="space-y-4">
                 {/* Name */}
                 <div>

@@ -75,7 +75,7 @@ const Navbar = () => {
                     user? <button onClick={()=> {
                         localStorage.removeItem("user");
                         window.location.reload();
-                    }} className="hover:bg-red-500 border text-white py-2 px-4 rounded-sm flex gap-x-2 items-center">
+                    }} className="hover:bg-red-500 border text-black py-2 px-4 rounded-sm flex gap-x-2 items-center">
                     <FaUser size={20} />
                     <span>Logout</span>
                 </button> : ''

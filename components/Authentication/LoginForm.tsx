@@ -26,7 +26,7 @@ const LoginForm = () => {
 
   const handleLoginButton = async () => {
     if(email === 'admin@gmail.com' && password === 'admin'){
-      
+      localStorage.setItem("user", JSON.stringify({name: 'Admin', email: 'admin@gmail.com'}));
       router.push('/admin-route');
     }else {
       const formData = {
