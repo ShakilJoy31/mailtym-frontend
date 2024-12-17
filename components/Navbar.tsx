@@ -9,25 +9,27 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const links = [
-    { url: "/", title: "Home" },
-    { url: "/about", title: "About" },
-    { url: "/admin-route", title: "Post a Pet" },
-    { url: "/donation", title: "Donaiton" }
-]
-
 const Navbar = () => {
     const pathname = usePathname();
     const [user, setUser] = useState<string | null>(null);
 
-   useEffect(() => {
-    const getUser = localStorage.getItem("user");
+    useEffect(() => {
+        const getUser = localStorage.getItem("user");
 
-    if (getUser) {
-      const parsedUser = JSON.parse(getUser); 
-      setUser(parsedUser?.name); 
-    }
-  }, []);
+        if (getUser) {
+            const parsedUser = JSON.parse(getUser);
+            setUser(parsedUser?.name);
+        }
+    }, []);
+
+    console.log(user); 
+
+    const links = [
+        { url: "/", title: "Home" },
+        { url: "/about", title: "About" },
+        { url: "/admin-route", title: "Post a Pet" },
+        { url: `${user === 'Admin' ? '/admin-route/manage-users' : '/donation'}`, title: `${user === 'Admin' ? 'Admin' : 'Donaiton'}` }
+    ]
 
     return (
 
@@ -63,23 +65,23 @@ const Navbar = () => {
             <div className="flex gap-x-4 py-[20px]">
 
                 {
-                    user? <button className="hover:bg-gray-200 hover:text-black border text-black py-2 px-4 rounded-sm flex gap-x-2 items-center">
-                    <FaUser size={20} />
-                    <span>{user}</span>
-                </button> : <Link href={'/login'} className="hover:bg-gray-200 hover:text-black border text-black py-2 px-4 rounded-sm flex gap-x-2 items-center">
-                    <FaUser size={20} />
-                    <span>Login</span>
-                </Link>
+                    user ? <button className="hover:bg-gray-200 hover:text-black border text-black py-2 px-4 rounded-sm flex gap-x-2 items-center">
+                        <FaUser size={20} />
+                        <span>{user}</span>
+                    </button> : <Link href={'/login'} className="hover:bg-gray-200 hover:text-black border text-black py-2 px-4 rounded-sm flex gap-x-2 items-center">
+                        <FaUser size={20} />
+                        <span>Login</span>
+                    </Link>
                 }
 
                 {
-                    user? <button onClick={()=> {
+                    user ? <button onClick={() => {
                         localStorage.removeItem("user");
                         window.location.reload();
                     }} className="hover:bg-red-500 border text-black py-2 px-4 rounded-sm flex gap-x-2 items-center">
-                    <FaUser size={20} />
-                    <span>Logout</span>
-                </button> : ''
+                        <FaUser size={20} />
+                        <span>Logout</span>
+                    </button> : ''
                 }
 
             </div>
