@@ -139,55 +139,7 @@ const SinglePet = () => {
                     background: 'black',
                     border: '1px solid white'
                 }} className="modal-box">
-                    <h3 className="flex text-white">Bkash Marchent: <span className='mx-4'>01680071048</span> <span className='mt-1 hover:cursor-pointer' onClick={copyToClipboard}><IoCopySharp size={20}></IoCopySharp></span></h3>
-                    <h1 className='mt-2'>Transaction id</h1>
-                    <input onChange={(e) => setTrx(e.target.value)} type="text" placeholder='Type your Transaction id here' className='p-2 rounded-md w-full mt-2 border border-white' />
-                    <div className='flex justify-end mt-4'>
-                        <button onClick={async () => {
-                            const getUser = localStorage.getItem("user");
-                            if (getUser) {
-                                const parsedUser = JSON.parse(getUser);
-                                const payload = {
-                                    animal: product,
-                                    orderBy: parsedUser,
-                                    trxId: trx
-                                }
-                                try {
-                                    const response = await fetch(`${baseURL}/add-pet-order`, {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify(payload),
-                                    });
-                                    const result = await response.json();
-                                    if (result.acknowledged) {
-                                        const modal = document.getElementById('alReadyExistsOnTheCartModal') as HTMLDialogElement;
-                                        if (modal) {
-                                            modal.close();
-                                        }
-                                        toast.success('Submitted successfully! ', {
-                                            autoClose: 2000,
-                                        });
-                                    } else {
-                                        toast.error('Something went wrong!', {
-                                            autoClose: 2000,
-                                        });
-                                    }
-                                } catch (error) {
-                                    toast.error('Something went wrong!', {
-                                        autoClose: 2000,
-                                    });
-                                }
-
-                                console.log(payload)
-                            } else {
-                                toast.error('Login required!', {
-                                    autoClose: 2000,
-                                });
-                            }
-                        }} className="w-32 bg-purple-600 text-white py-1 rounded-md hover:bg-purple-700 transition">
-                            Submit
-                        </button>
-                    </div>
+                    Thank you so much for adoptation!
                 </div>
                 <form method="dialog" className="modal-backdrop">
                     <button>close</button>

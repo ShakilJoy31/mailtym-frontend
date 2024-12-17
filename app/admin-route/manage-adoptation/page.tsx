@@ -7,33 +7,12 @@ import { baseURL } from "@/server-calling/variable";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-interface Animal {
-    _id: string;
-    name: string;
-    species: string;
-    breed: string;
-    age: string;
-    gender: string;
-    color: string;
-    size: string;
-    description: string;
-    images: string[];
-    adoptionFee: string;
-    healthCondition: string;
-    spayedNeutered: string;
-    vaccinationStatus: string;
-}
-
 interface Order {
     _id: string;
     trxId: string;
-    orderBy: {
-        email: string;
-        name: string;
-    };
-    animal: Animal;
+orderBy: string;
+    animal: string;
 }
-
 
 
 const ManageAdoptation = () => {
@@ -56,6 +35,7 @@ const ManageAdoptation = () => {
             });
     }, []);
 
+    console.log(users);
 
 
     const handleDeleteUser = async () => {
@@ -92,9 +72,7 @@ const ManageAdoptation = () => {
                                 <th>SL</th>
                                 <th>User</th>
                                 <th>Email</th>
-                                <th>Pet id</th>
-                                <th>Pet Image</th>
-                                <th>Trx ID</th>
+                                <th>Amount</th>
                                 <th>Action Button</th>
                             </tr>
                         </thead>
@@ -103,17 +81,8 @@ const ManageAdoptation = () => {
                             {
                                 users.map((user, index) => <tr key={index} className="bg-gray-300">
                                     <th>{index + 1}</th>
-                                    <td>{user?.orderBy?.name}</td>
-                                    <td>{user?.orderBy?.email}</td>
-                                    <td>{user?.animal?._id}</td>
-                                    <td>
-                                        <img
-                                            src={user?.animal?.images[0]}
-                                            alt='Pet image'
-                                            className="w-12 h-12 rounded-lg object-cover"
-                                        />
-
-                                    </td>
+                                    <td>{user?.animal}</td>
+                                    <td>{user?.orderBy}</td>
                                     <td>{user?.trxId}</td>
                                     <td><button onClick={() => {
                                         setDeleteUserId(user?._id);
@@ -151,6 +120,7 @@ const ManageAdoptation = () => {
                     <p className="py-4 flex justify-center">Press ESC key or click on ✕ button to close</p>
                 </div>
             </dialog>
+
 
         </div>
     );

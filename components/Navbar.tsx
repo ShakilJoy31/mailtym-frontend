@@ -12,7 +12,8 @@ import { useEffect, useState } from "react";
 const links = [
     { url: "/", title: "Home" },
     { url: "/about", title: "About" },
-    { url: "/admin-route", title: "Upload Pet" }
+    { url: "/admin-route", title: "Post a Pet" },
+    { url: "/donation", title: "Donaiton" }
 ]
 
 const Navbar = () => {
