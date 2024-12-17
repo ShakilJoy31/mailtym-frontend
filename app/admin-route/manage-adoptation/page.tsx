@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 interface Order {
     _id: string;
     trxId: string;
-orderBy: string;
+    orderBy: string;
     animal: string;
 }
 
@@ -60,7 +60,7 @@ const ManageAdoptation = () => {
         }
     };
 
-    console.log(users); 
+    console.log(users);
     return (
         <div className="px-4 sm:px-6 md:px-8  lg:px-12 xl:px-16 2xl:px-20 py-8 h-screen">
             <div>
@@ -84,19 +84,37 @@ const ManageAdoptation = () => {
                                     <td>{user?.animal}</td>
                                     <td>{user?.orderBy}</td>
                                     <td>{user?.trxId}</td>
-                                    <td><button onClick={() => {
-                                        setDeleteUserId(user?._id);
-                                        const modal = document.getElementById('my_modal_3') as HTMLDialogElement | null;
-                                        if (modal) {
-                                            modal.showModal();
-                                        } else {
-                                            console.error("Modal element not found!");
-                                        }
-                                    }}
-                                        type="button"
-                                        className="w-32 bg-red-600 hover:bg-red-500 text-white py-2 rounded">
-                                        Delete
-                                    </button></td>
+                                    <td>
+                                        <div>
+
+                                            <button 
+                                                type="button"
+                                                className="w-32 bg-green-600 hover:bg-green-500 text-white py-2 rounded">
+                                                Approve
+                                            </button>
+
+
+                                            <button 
+                                                type="button"
+                                                className="w-32 bg-yellow-600 hover:bg-yellow-500 text-white py-2 rounded">
+                                                Reject
+                                            </button>
+
+
+                                            <button onClick={() => {
+                                                setDeleteUserId(user?._id);
+                                                const modal = document.getElementById('my_modal_3') as HTMLDialogElement | null;
+                                                if (modal) {
+                                                    modal.showModal();
+                                                } else {
+                                                    console.error("Modal element not found!");
+                                                }
+                                            }}
+                                                type="button"
+                                                className="w-32 bg-red-600 hover:bg-red-500 text-white py-2 rounded">
+                                                Delete
+                                            </button>
+                                        </div></td>
                                 </tr>)
                             }
 
