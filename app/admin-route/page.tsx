@@ -118,8 +118,9 @@ const AdminPage = () => {
                         onClick={() => router.push('/admin-route/manage-adoptation')}
                         className="w-48 bg-black hover:bg-gray-600 text-white py-2 rounded"
                     >
-                        Manage Adoptation
+                        Manage Donation
                     </button>
+
                 </div> : ''
                 }
                 
