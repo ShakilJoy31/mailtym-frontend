@@ -18,12 +18,13 @@ type Product = {
   adoptionFee: string;
   description: string;
   images: string[];
+  status: string;
 };
 
 const AdminPage = () => {
   // Use the Product type for the state
   const [products, setProducts] = useState<Product[]>([]);
-  const [limit, setLimit] = useState(8); 
+  const [limit, setLimit] = useState(8);
   const router = useRouter();
 
   useEffect(() => {
@@ -35,7 +36,8 @@ const AdminPage = () => {
     })
       .then((res) => res.json())
       .then((data: Product[]) => {
-        setProducts(data); // Set the products data
+        const filterPending = data.filter(animal => animal.status === 'approved');
+        setProducts(filterPending);
       })
       .catch((error) => console.error("Failed to fetch products:", error));
   }, []);
@@ -110,7 +112,7 @@ const AdminPage = () => {
       </div>
 
       <div className="flex justify-end mt-8">
-        <button onClick={()=> setLimit(limit + 4)}
+        <button onClick={() => setLimit(limit + 4)}
           type="button"
           className="w-32 bg-black hover:bg-gray-500 text-white py-2 rounded">
           Show more

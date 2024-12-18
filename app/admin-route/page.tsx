@@ -30,15 +30,15 @@ const AdminPage = () => {
 
     const [user, setUser] = useState<string | null>(null);
 
-    useEffect(()=> {
-    const getUser = localStorage.getItem("user");
-    if (getUser) {
-      const parsedUser = JSON.parse(getUser); 
-      setUser(parsedUser?.email);
-    }
-    },[])
+    useEffect(() => {
+        const getUser = localStorage.getItem("user");
+        if (getUser) {
+            const parsedUser = JSON.parse(getUser);
+            setUser(parsedUser?.email);
+        }
+    }, [])
 
-    console.log(user); 
+    console.log(user);
 
     // Handle Image Upload
     if (picture) {
@@ -72,6 +72,7 @@ const AdminPage = () => {
             adoptionFee,
             description,
             images,
+            status: 'pending'
         };
 
         // Example POST request to save data
@@ -105,25 +106,33 @@ const AdminPage = () => {
                 <h1 className="text-xl font-bold mb-4 text-black">Add a New Pet</h1>
                 {
                     user === 'admin@gmail.com' ? <div className="flex gap-x-4">
-                    <button
-                        type="button"
-                        onClick={() => router.push('/admin-route/manage-users')}
-                        className="w-48 bg-black hover:bg-gray-600 text-white py-2 rounded"
-                    >
-                        Manage Users
-                    </button>
+                        <button
+                            type="button"
+                            onClick={() => router.push('/admin-route/manage-users')}
+                            className="w-48 bg-black hover:bg-gray-600 text-white py-2 rounded"
+                        >
+                            Manage Users
+                        </button>
 
-                    <button
-                        type="button"
-                        onClick={() => router.push('/admin-route/manage-adoptation')}
-                        className="w-48 bg-black hover:bg-gray-600 text-white py-2 rounded"
-                    >
-                        Manage Donation
-                    </button>
+                        <button
+                            type="button"
+                            onClick={() => router.push('/admin-route/manage-adoptation')}
+                            className="w-48 bg-black hover:bg-gray-600 text-white py-2 rounded"
+                        >
+                            Manage Donation
+                        </button>
 
-                </div> : ''
+                        <button
+                            type="button"
+                            onClick={() => router.push('/admin-route/manage-pet')}
+                            className="w-48 bg-black hover:bg-gray-600 text-white py-2 rounded"
+                        >
+                            Manage Pet
+                        </button>
+
+                    </div> : ''
                 }
-                
+
             </div>
 
             <form className="space-y-4">
@@ -150,6 +159,23 @@ const AdminPage = () => {
                         <option>Dog</option>
                         <option>Cat</option>
                         <option>Rabbit</option>
+                        <option>Bird</option>
+                        <option>Parrot</option>
+                        <option>Fish</option>
+                        <option>Turtle</option>
+                        <option>Hamster</option>
+                        <option>Snake</option>
+                        <option>Lizard</option>
+                        <option>Horse</option>
+                        <option>Goat</option>
+                        <option>Chicken</option>
+                        <option>Duck</option>
+                        <option>Pigeon</option>
+                        <option>Frog</option>
+                        <option>Guinea Pig</option>
+                        <option>Chinchilla</option>
+                        <option>Hedgehog</option>
+                        <option>Ferret</option>
                     </select>
                 </div>
 
